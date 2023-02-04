@@ -1,0 +1,94 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body{
+  --font-family: "Poppins", sans-serif;
+  font-family: var( --font-family);
+  font-size: 24px;
+}
+
+a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+  cursor: pointer;
+}
+a:link,
+a:hover,
+a:visited {
+  text-decoration: none;
+  outline: none;
+}
+a:link {
+  -webkit-tap-highlight-color: none;
+}
+
+.mycaraousel{
+  height: 100vh;
+  background-image: linear-gradient(rgba(0,0,0, 0.4), rgba(0,0,0, 0.7)), url('./assets/images/bgtest.jpeg');
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.myBlog{
+  padding-top: 100px;
+  margin-left: 20px;
+}
+
+.myLogin{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: linear-gradient(to left bottom, #0755cd, #084fbd, #0b49ad, #0e449d, #103e8e, #0b3c8f, #053a91, #003892, #0038a3, #0037b4, #0635c4, #2030d4);
+  color: white;
+}
+
+/* masterlayout */
+
+.main-content{
+  width: 100%;
+  padding-left: 19rem;
+  
+}
+.fadded-main-content{
+  
+  padding-left: 10px;
+  width: 100%;
+}
+
+
+
+/* sidebaradmin */
+
+.sidebar-admin{
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 55px;
+  left: 0;
+  bottom: 0;
+  background: black;
+  color: white;
+  width: 280px;
+  height: auto;
+  transition: all 0.2s ease-in-out;
+}
+
+.fadded-sidebar-admin{
+  left: -100%;
+}
+
