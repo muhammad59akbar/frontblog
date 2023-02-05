@@ -7,6 +7,7 @@ import * as FaIcons from "react-icons/fa";
 import { Container, Nav } from "react-bootstrap";
 
 const SidebarAdmin = ({ show }) => {
+  const nama = "abay@gmail.com";
   return (
     <div
       className={show ? "fadded-sidebar-admin sidebar-admin" : "sidebar-admin "}
@@ -27,19 +28,19 @@ const SidebarAdmin = ({ show }) => {
           </div>
           <div className="d-flex flex flex-row align-items-center text-white fs-5 py-2   border-bottom border-white">
             <HiIcons.HiOutlineViewGrid className="fs-3 mx-4" />
-            <Nav.Link href="#action1" className="text-white ">
+            <Nav.Link href="/mdproadmin/ViewBlog" className="text-white ">
               View Blog
             </Nav.Link>
           </div>
           <div className="d-flex flex flex-row align-items-center text-white fs-5 py-2   border-bottom border-white">
             <FaIcons.FaUserEdit className="fs-3 mx-4" />
-            <Nav.Link href="#action1" className="text-white ">
+            <Nav.Link href="/mdproadmin/Add-User" className="text-white ">
               Add Users
             </Nav.Link>
           </div>
           <div className="d-flex flex flex-row align-items-center text-white fs-5 py-2   border-bottom border-white">
             <FaIcons.FaUserAlt className="fs-3 mx-4" />
-            <Nav.Link href="#action1" className="text-white ">
+            <Nav.Link href="/mdproadmin/Users" className="text-white ">
               Users
             </Nav.Link>
           </div>
@@ -51,6 +52,13 @@ const SidebarAdmin = ({ show }) => {
           </div>
         </Nav>
       </Container>
+      <div
+        className="d-flex flex-column align-items-center text-white py-2"
+        style={{ background: "#343a40" }}
+      >
+        <h2 className="fs-5">Logged in as</h2>
+        <span>{nama}</span>
+      </div>
     </div>
   );
 };
