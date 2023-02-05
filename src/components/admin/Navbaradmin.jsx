@@ -6,7 +6,7 @@ import * as AiIcons from "react-icons/ai";
 const Navbaradmin = ({ show, clickShow }) => {
   const nama = "abay@gmail.com";
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar collapseOnSelect sticky="top" expand="lg" bg="dark" variant="dark">
       <Container>
         <Navbar.Brand>MDPRO ADMIN</Navbar.Brand>
         <div
