@@ -23,8 +23,8 @@ const AddBlog = () => {
               placeholder="Whats Your Think About it"
             />
           </Form.Group>
+          <Button variant="primary">Save</Button>
         </Form>
-        <Button variant="primary">Save</Button>
       </Container>
     </div>
   );

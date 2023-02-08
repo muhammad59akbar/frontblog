@@ -87,6 +87,7 @@ a:link {
   width: 280px;
   height: auto;
   transition: all 0.2s ease-in-out;
+  z-index: 99;
 }
 
 .fadded-sidebar-admin{
