@@ -3,7 +3,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import image1 from "../../assets/images/bgtest.jpeg";
-
+import { NavLink } from "react-router-dom";
 import * as AiIcons from "react-icons/ai";
 
 const CardsAdmin = () => {
@@ -18,9 +18,12 @@ const CardsAdmin = () => {
                 <Card.Title>Card Title</Card.Title>
 
                 <div className="d-flex justify-content-end">
-                  <Button variant="success" className="mx-2">
+                  <NavLink
+                    to="/mdproadmin/ViewBlog/Edit"
+                    className="btn btn-success mx-2"
+                  >
                     <AiIcons.AiFillEdit />
-                  </Button>
+                  </NavLink>
                   <Button variant="danger">
                     <AiIcons.AiFillDelete />
                   </Button>

@@ -1,4 +1,6 @@
 import Dashboard from "../../components/admin/Dashboard";
+import EditBlog from "../../components/admin/EditBlog";
+import EditUser from "../../components/admin/EditUser";
 import AddBlog from "./AddBlog";
 import AddUser from "./AddUser";
 import Users from "./Users";
@@ -10,6 +12,13 @@ const RoutesAdmin = [
   { path: "/Add-User", exact: true, name: "Add-User", component: AddUser },
   { path: "/ViewBlog", exact: true, name: "View-Blog", component: ViewBlog },
   { path: "/Users", exact: true, name: "View-Blog", component: Users },
+  { path: "/Users/Edit", exact: true, name: "View-Blog", component: EditUser },
+  {
+    path: "/ViewBlog/Edit",
+    exact: true,
+    name: "View-Blog",
+    component: EditBlog,
+  },
 ];
 
 export default RoutesAdmin;
