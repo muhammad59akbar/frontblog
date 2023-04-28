@@ -8,6 +8,9 @@ import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "./index.css";
+import axios from "axios";
+
+axios.defaults.withCredentials = true;
 
 const container = document.getElementById("root");
 const root = createRoot(container);

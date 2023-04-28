@@ -1,13 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import Navbaradmin from "../../components/admin/Navbaradmin";
 import SidebarAdmin from "../../components/admin/SidebarAdmin";
+import { MyaccBlog } from "../../features/AuthSlice";
 import RoutesAdmin from "./RoutesAdmin";
 
 const Masterlayout = () => {
   const [show, setShow] = useState(false);
   const clickShow = () => setShow(!show);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { isError } = useSelector((state) => state.authLogin);
+
+  useEffect(() => {
+    dispatch(MyaccBlog());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (isError) {
+      navigate("/auth/mdprologin");
+    }
+  }, [isError, navigate]);
 
   return (
     <>

@@ -2,9 +2,19 @@ import React from "react";
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { reset, userBlogLogout } from "../../features/AuthSlice";
 
 const Navbaradmin = ({ show, clickShow }) => {
-  const nama = "abay@gmail.com";
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { UserBlog } = useSelector((state) => state.authLogin);
+  const Logout = () => {
+    dispatch(userBlogLogout());
+    dispatch(reset());
+    navigate("/auth/mdprologin");
+  };
   return (
     <Navbar collapseOnSelect sticky="top" expand="lg" bg="dark" variant="dark">
       <Container>
@@ -19,16 +29,22 @@ const Navbaradmin = ({ show, clickShow }) => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto">
             <NavDropdown
-              title={`Signed in as: ${nama}`}
+              title={`Signed in as: ${UserBlog && UserBlog.email}`}
               id="collasible-nav-dropdown"
               align="end"
             >
-              <NavDropdown.Item href="#action/3.1">Profile</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
+              <NavDropdown.Item href="/mdproadmin/Profile">
+                Profile
+              </NavDropdown.Item>
+              <NavDropdown.Item
+                href={`/mdproadmin/Change=Password/${
+                  UserBlog && UserBlog.uuid
+                }`}
+              >
                 Change Password
               </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">Logout</NavDropdown.Item>
+              <NavDropdown.Item onClick={Logout}>Logout</NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>

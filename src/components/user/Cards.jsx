@@ -1,96 +1,61 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
-import image1 from "../../assets/images/bgtest.jpeg";
 
 const Cards = () => {
+  const [getBlogUser, setgetBlogUser] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:5000/proBlog").then((response) => {
+      setgetBlogUser(response.data);
+    });
+  }, []);
+
   return (
     <>
       <Container fluid>
         <h2 className="text-center mt-5">Welcome My Blog</h2>
         <p className="text-center">Happy Reading</p>
         <Row className="d-flex flex-row justifty-content-center align-item-center">
-          <Col sm={3} className="my-2">
-            <Card style={{ width: "100%" }}>
-              <Card.Img variant="top" src={image1} />
-              <Card.Body>
-                <Card.Title>Card Title</Card.Title>
-                <Card.Text>
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </Card.Text>
-                <Button variant="primary">Go somewhere</Button>
-              </Card.Body>
-            </Card>
-          </Col>
+          {getBlogUser.map((res, idx) => {
+            return (
+              <Col sm={4} className="my-2" key={idx}>
+                <Card style={{ width: "100%" }}>
+                  <Card.Img
+                    variant="top"
+                    src={res.url}
+                    style={{ height: "300px", objectFit: "cover" }}
+                  />
+                  <Card.Body>
+                    <Card.Title>{res.title}</Card.Title>
 
-          <Col sm={3} className="my-2">
-            <Card style={{ width: "100%" }}>
-              <Card.Img variant="top" src={image1} />
-              <Card.Body>
-                <Card.Title>Card Title</Card.Title>
-                <Card.Text>
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </Card.Text>
-                <Button variant="primary">Go somewhere</Button>
-              </Card.Body>
-            </Card>
-          </Col>
+                    {res.description.length > 30 ? (
+                      <Card.Text>
+                        {`${res.description.substring(0, 30)}...`}
+                        <Link
+                          to={`/Blog/View_Post/${res.uuid}`}
+                          className="mx-1"
+                        >
+                          Read More
+                        </Link>
+                      </Card.Text>
+                    ) : (
+                      <Card.Text>{res.description}</Card.Text>
+                    )}
 
-          <Col sm={3} className="my-2">
-            <Card style={{ width: "100%" }}>
-              <Card.Img variant="top" src={image1} />
-              <Card.Body>
-                <Card.Title>Card Title</Card.Title>
-                <Card.Text>
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </Card.Text>
-                <Button variant="primary">Go somewhere</Button>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col sm={3} className="my-2">
-            <Card style={{ width: "100%" }}>
-              <Card.Img variant="top" src={image1} />
-              <Card.Body>
-                <Card.Title>Card Title</Card.Title>
-                <Card.Text>
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </Card.Text>
-                <Button variant="primary">Go somewhere</Button>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col sm={3} className="my-2">
-            <Card style={{ width: "100%" }}>
-              <Card.Img variant="top" src={image1} />
-              <Card.Body>
-                <Card.Title>Card Title</Card.Title>
-                <Card.Text>
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </Card.Text>
-                <Button variant="primary">Go somewhere</Button>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col sm={3} className="my-2">
-            <Card style={{ width: "100%" }}>
-              <Card.Img variant="top" src={image1} />
-              <Card.Body>
-                <Card.Title>Card Title</Card.Title>
-                <Card.Text>
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </Card.Text>
-                <Button variant="primary">Go somewhere</Button>
-              </Card.Body>
-            </Card>
-          </Col>
+                    <Link
+                      to={`/Blog/View_Post/${res.uuid}`}
+                      className="btn btn-primary"
+                    >
+                      View More
+                    </Link>
+                  </Card.Body>
+                </Card>
+              </Col>
+            );
+          })}
         </Row>
       </Container>
     </>
