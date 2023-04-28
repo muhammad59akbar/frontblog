@@ -6,7 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import { MyaccBlog } from "../../features/AuthSlice";
 
-const EditUser = () => {
+const ChangePassword = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -14,11 +14,9 @@ const EditUser = () => {
   const [confirmpassword, setconfirmpassword] = useState("");
   const [role, setRole] = useState("");
   const [msg, SetMsg] = useState("");
-
   const params = useParams();
-  const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const { isError, UserBlog } = useSelector((state) => state.authLogin);
 
   useEffect(() => {
@@ -29,23 +27,28 @@ const EditUser = () => {
     if (isError) {
       navigate("/");
     }
-    if (UserBlog && UserBlog.role_blog !== "Admin") {
+    if (UserBlog && UserBlog.uuid !== params.id) {
       navigate("/mdproadmin");
+    } else {
+      setFirstName(UserBlog && UserBlog.first_name);
+      setLastName(UserBlog && UserBlog.last_name);
+      setEmail(UserBlog && UserBlog.email);
+      setRole(UserBlog && UserBlog.role_blog);
     }
-  }, [isError, UserBlog, navigate]);
+  }, [isError, UserBlog, navigate, params]);
 
-  useEffect(() => {
-    axios
-      .get(`http://localhost:5000/userBlogku/${params.id}`)
-      .then((response) => {
-        setFirstName(response.data.first_name);
-        setLastName(response.data.last_name);
-        setEmail(response.data.email);
-        setRole(response.data.role_blog);
-      });
-  }, [params]);
+  // useEffect(() => {
+  //   axios
+  //     .get(`http://localhost:5000/userBlogku/${params.id}`)
+  //     .then((response) => {
+  //       setFirstName(response.data.first_name);
+  //       setLastName(response.data.last_name);
+  //       setEmail(response.data.email);
+  //       setRole(response.data.role_blog);
+  //     });
+  // }, [params]);
 
-  const updateUser = async (e) => {
+  const updatepassword = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.patch(
@@ -63,7 +66,7 @@ const EditUser = () => {
         icon: "success",
         text: response.data.msg,
       });
-      navigate("/mdproadmin/Users");
+      navigate("/mdproadmin/Profile");
     } catch (error) {
       if (error.response) {
         SetMsg(error.response.data.msg);
@@ -74,7 +77,7 @@ const EditUser = () => {
   return (
     <div className="d-flex w-100 justify-content-center align-item-center py-5">
       <Container className="border border-2 rounded rounded-2 p-5 mx-2">
-        <Form onSubmit={updateUser}>
+        <Form onSubmit={updatepassword}>
           {msg ? (
             <p
               className="text-secondary text-center fs-6 border border-danger rounded py-2 mb-2"
@@ -90,7 +93,8 @@ const EditUser = () => {
               <Form.Label>First Name</Form.Label>
               <Form.Control
                 placeholder="First name"
-                value={firstName}
+                value={firstName === null ? "" : firstName}
+                disabled
                 required
                 onChange={(e) => setFirstName(e.target.value)}
               />
@@ -99,7 +103,8 @@ const EditUser = () => {
               <Form.Label>Last Name</Form.Label>
               <Form.Control
                 placeholder="Last name"
-                value={lastName}
+                value={lastName === null ? "" : lastName}
+                disabled
                 required
                 onChange={(e) => setLastName(e.target.value)}
               />
@@ -110,7 +115,8 @@ const EditUser = () => {
             <Form.Control
               type="email"
               placeholder="Enter email"
-              value={email}
+              value={email === null ? "" : email}
+              disabled
               required
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -138,19 +144,19 @@ const EditUser = () => {
               onChange={(e) => setconfirmpassword(e.target.value)}
             />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="floatingSelect">
+          <Form.Group className="mb-3">
             <Form.Label>Role</Form.Label>
-            <Form.Select
-              aria-label="Default select example"
-              value={role}
+            <Form.Control
+              type="text"
+              placeholder="Password"
+              autoComplete="true"
               required
+              disabled
+              value={role === null ? "" : role}
               onChange={(e) => setRole(e.target.value)}
-            >
-              <option value="">Open this select menu</option>
-              <option value="Admin">Admin</option>
-              <option value="User">User</option>
-            </Form.Select>
+            />
           </Form.Group>
+
           <Button type="submit">Save</Button>
         </Form>
       </Container>
@@ -158,4 +164,4 @@ const EditUser = () => {
   );
 };
 
-export default EditUser;
+export default ChangePassword;

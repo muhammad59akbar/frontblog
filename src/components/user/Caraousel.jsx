@@ -11,11 +11,8 @@ const Caraousel = () => {
       <Container>
         <Row>
           <Col className=" text-center text-white">
-            <h1 className="fs-1">My Blog aplication</h1>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut,
-              sunt.
-            </p>
+            <h1 className="fs-1">My Blog Application</h1>
+            <p>Write And Share Your Experience To Others Now</p>
             <Button variant="primary" onClick={() => navigate("/Blog")}>
               View Blog
             </Button>

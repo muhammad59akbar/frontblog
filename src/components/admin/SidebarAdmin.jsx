@@ -5,9 +5,20 @@ import * as HiIcons from "react-icons/hi";
 import * as RiIcons from "react-icons/ri";
 import * as FaIcons from "react-icons/fa";
 import { Container, Nav } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { reset, userBlogLogout } from "../../features/AuthSlice";
 
 const SidebarAdmin = ({ show }) => {
-  const nama = "abay@gmail.com";
+  const { UserBlog } = useSelector((state) => state.authLogin);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const Logout = () => {
+    dispatch(userBlogLogout());
+    dispatch(reset());
+    navigate("/auth/mdprologin");
+  };
   return (
     <div
       className={show ? "fadded-sidebar-admin sidebar-admin" : "sidebar-admin "}
@@ -32,21 +43,27 @@ const SidebarAdmin = ({ show }) => {
               View Blog
             </Nav.Link>
           </div>
-          <div className="d-flex flex flex-row align-items-center text-white fs-5 py-2   border-bottom border-white">
-            <FaIcons.FaUserEdit className="fs-3 mx-4" />
-            <Nav.Link href="/mdproadmin/Add-User" className="text-white ">
-              Add Users
-            </Nav.Link>
-          </div>
-          <div className="d-flex flex flex-row align-items-center text-white fs-5 py-2   border-bottom border-white">
-            <FaIcons.FaUserAlt className="fs-3 mx-4" />
-            <Nav.Link href="/mdproadmin/Users" className="text-white ">
-              Users
-            </Nav.Link>
-          </div>
+
+          {UserBlog && UserBlog.role_blog === "Admin" && (
+            <>
+              <div className="d-flex flex flex-row align-items-center text-white fs-5 py-2   border-bottom border-white">
+                <FaIcons.FaUserEdit className="fs-3 mx-4" />
+                <Nav.Link href="/mdproadmin/Add-User" className="text-white ">
+                  Add Users
+                </Nav.Link>
+              </div>
+              <div className="d-flex flex flex-row align-items-center text-white fs-5 py-2   border-bottom border-white">
+                <FaIcons.FaUserAlt className="fs-3 mx-4" />
+                <Nav.Link href="/mdproadmin/Users" className="text-white ">
+                  Users
+                </Nav.Link>
+              </div>
+            </>
+          )}
+
           <div className="d-flex flex flex-row align-items-center text-white fs-5 py-2   border-bottom border-white">
             <RiIcons.RiLogoutBoxRLine className="fs-3 mx-4" />
-            <Nav.Link href="#action1" className="text-white ">
+            <Nav.Link onClick={Logout} className="text-white ">
               Logout
             </Nav.Link>
           </div>
@@ -57,7 +74,7 @@ const SidebarAdmin = ({ show }) => {
         style={{ background: "#343a40" }}
       >
         <h2 className="fs-5">Logged in as</h2>
-        <span>{nama}</span>
+        <span>{UserBlog && UserBlog.email}</span>
       </div>
     </div>
   );
