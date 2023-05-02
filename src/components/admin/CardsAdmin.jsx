@@ -11,9 +11,11 @@ const CardsAdmin = () => {
   const [Blog, setBlog] = useState([]);
 
   const getAllBlog = async () => {
-    axios.get("http://localhost:5000/proBlogAdmin").then(({ data }) => {
-      setBlog(data);
-    });
+    axios
+      .get("https://blog-app-tan-six.vercel.app/proBlogAdmin")
+      .then(({ data }) => {
+        setBlog(data);
+      });
   };
   useEffect(() => {
     getAllBlog();
@@ -35,7 +37,7 @@ const CardsAdmin = () => {
       return;
     }
     await axios
-      .delete(`http://localhost:5000/proBlogAdmin/${postID}`)
+      .delete(`https://blog-app-tan-six.vercel.app/proBlogAdmin/${postID}`)
       .then(({ data }) => {
         Swal.fire({
           icon: "success",

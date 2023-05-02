@@ -1,8 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { PageTittle } from "../../TittleName";
 
 const Dashboard = () => {
   const { UserBlog } = useSelector((state) => state.authLogin);
+  PageTittle("Dashboard");
 
   return (
     <div

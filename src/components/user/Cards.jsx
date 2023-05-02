@@ -8,9 +8,11 @@ const Cards = () => {
   const [getBlogUser, setgetBlogUser] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/proBlog").then((response) => {
-      setgetBlogUser(response.data);
-    });
+    axios
+      .get("https://blog-app-tan-six.vercel.app/proBlog")
+      .then((response) => {
+        setgetBlogUser(response.data);
+      });
   }, []);
 
   return (

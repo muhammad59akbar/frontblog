@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import { MyaccBlog } from "../../features/AuthSlice";
+import { PageTittle } from "../../TittleName";
 
 const EditUser = () => {
   const [firstName, setFirstName] = useState("");
@@ -20,6 +21,7 @@ const EditUser = () => {
   const dispatch = useDispatch();
 
   const { isError, UserBlog } = useSelector((state) => state.authLogin);
+  PageTittle("Edit User");
 
   useEffect(() => {
     dispatch(MyaccBlog());
@@ -36,7 +38,7 @@ const EditUser = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/userBlogku/${params.id}`)
+      .get(`https://blog-app-tan-six.vercel.app/userBlogku/${params.id}`)
       .then((response) => {
         setFirstName(response.data.first_name);
         setLastName(response.data.last_name);
@@ -49,7 +51,7 @@ const EditUser = () => {
     e.preventDefault();
     try {
       const response = await axios.patch(
-        `http://localhost:5000/userBlogku/${params.id}`,
+        `https://blog-app-tan-six.vercel.app/userBlogku/${params.id}`,
         {
           firstName: firstName,
           lastName: lastName,

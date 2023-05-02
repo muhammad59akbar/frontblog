@@ -3,6 +3,7 @@ import { Container, Figure, Button } from "react-bootstrap";
 import Navbaruser from "../../components/user/Navbaruser";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import { PageTittle } from "../../TittleName";
 
 const ViewPost = () => {
   const [DetailPost, setDetailPost] = useState([]);
@@ -10,11 +11,15 @@ const ViewPost = () => {
   const navigate = useNavigate();
   const params = useParams();
 
+  PageTittle("Blog Detail");
+
   useEffect(() => {
-    axios.get(`http://localhost:5000/proBlog/${params.id}`).then((response) => {
-      setDetailPost(response.data);
-      setUser(response.data.user_blog);
-    });
+    axios
+      .get(`https://blog-app-tan-six.vercel.app/proBlog/${params.id}`)
+      .then((response) => {
+        setDetailPost(response.data);
+        setUser(response.data.user_blog);
+      });
   }, [params]);
 
   return (

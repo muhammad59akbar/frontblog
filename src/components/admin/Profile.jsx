@@ -2,9 +2,11 @@ import React from "react";
 
 import { Col, Container, Form, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import { PageTittle } from "../../TittleName";
 
 const Profile = () => {
   const { UserBlog } = useSelector((state) => state.authLogin);
+  PageTittle("Profile");
   return (
     <div className="d-flex w-100 justify-content-center align-item-center py-4">
       <Container className="border border-2 rounded rounded-2 p-5 mx-2">

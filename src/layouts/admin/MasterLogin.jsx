@@ -6,12 +6,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { reset, userBlogLogin } from "../../features/AuthSlice";
+import { PageTittle } from "../../TittleName";
 
 const MasterLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  PageTittle("Login Blog");
   const { UserBlog, isError, isLoading, isSuccess, message } = useSelector(
     (state) => state.authLogin
   );

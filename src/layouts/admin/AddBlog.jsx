@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { MyaccBlog } from "../../features/AuthSlice";
+import { PageTittle } from "../../TittleName";
 
 const AddBlog = () => {
   const [title, setTitle] = useState("");
@@ -15,6 +16,8 @@ const AddBlog = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  PageTittle("Add Blog");
 
   const { isError } = useSelector((state) => state.authLogin);
 
@@ -54,7 +57,7 @@ const AddBlog = () => {
     formData.append("img", img);
     try {
       const response = await axios.post(
-        "http://localhost:5000/proBlogAdmin",
+        "https://blog-app-tan-six.vercel.app/proBlogAdmin",
         formData,
         {
           headers: {

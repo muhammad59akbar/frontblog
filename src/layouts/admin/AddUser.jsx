@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { MyaccBlog } from "../../features/AuthSlice";
+import { PageTittle } from "../../TittleName";
 
 const AddUser = () => {
   const [firstName, setFirstName] = useState("");
@@ -16,6 +17,8 @@ const AddUser = () => {
   const [msg, SetMsg] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  PageTittle("Add User");
 
   const { isError, UserBlog } = useSelector((state) => state.authLogin);
 
@@ -43,14 +46,17 @@ const AddUser = () => {
       return;
     }
     try {
-      const response = await axios.post("http://localhost:5000/userBlogku", {
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        password: password,
-        confirmpassword: confirmpassword,
-        role: role,
-      });
+      const response = await axios.post(
+        "https://blog-app-tan-six.vercel.app/userBlogku",
+        {
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          password: password,
+          confirmpassword: confirmpassword,
+          role: role,
+        }
+      );
       Swal.fire({
         icon: "success",
         text: response.data.msg,

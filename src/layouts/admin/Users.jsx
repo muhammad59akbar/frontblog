@@ -35,9 +35,11 @@ const Users = () => {
   }, []);
 
   const fetchUser = async () => {
-    axios.get("http://localhost:5000/userBlogku").then(({ data }) => {
-      setgetUserBlog(data);
-    });
+    axios
+      .get("https://blog-app-tan-six.vercel.app/userBlogku")
+      .then(({ data }) => {
+        setgetUserBlog(data);
+      });
   };
 
   const deleteUserBlog = async (userBlogId) => {
@@ -58,7 +60,7 @@ const Users = () => {
     }
 
     await axios
-      .delete(`http://localhost:5000/userBlogku/${userBlogId}`)
+      .delete(`https://blog-app-tan-six.vercel.app/${userBlogId}`)
       .then(({ data }) => {
         Swal.fire({
           icon: "success",

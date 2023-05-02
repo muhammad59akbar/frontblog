@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import { MyaccBlog } from "../../features/AuthSlice";
+import { PageTittle } from "../../TittleName";
 
 const EditBlog = () => {
   const [title, setTitle] = useState("");
@@ -16,6 +17,7 @@ const EditBlog = () => {
   const navigate = useNavigate();
   const params = useParams();
   const { isError } = useSelector((state) => state.authLogin);
+  PageTittle("Edit Blog");
 
   useEffect(() => {
     dispatch(MyaccBlog());
@@ -83,7 +85,7 @@ const EditBlog = () => {
     formData.append("img", img);
     try {
       const response = await axios.patch(
-        `http://localhost:5000/proBlogAdmin/${params.id}`,
+        `https://blog-app-tan-six.vercel.app/proBlogAdmin/${params.id}`,
         formData,
         {
           headers: {

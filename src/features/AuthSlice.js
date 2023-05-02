@@ -13,10 +13,13 @@ export const userBlogLogin = createAsyncThunk(
   "UserBlog/userBlogLogin",
   async (UserBlog, thunkApi) => {
     try {
-      const response = await axios.post("http://localhost:5000/mdproLoginKu", {
-        email: UserBlog.email,
-        password: UserBlog.password,
-      });
+      const response = await axios.post(
+        "https://blog-app-tan-six.vercel.app/mdproLoginKu",
+        {
+          email: UserBlog.email,
+          password: UserBlog.password,
+        }
+      );
       return response.data;
     } catch (error) {
       if (error.response) {
@@ -31,7 +34,9 @@ export const MyaccBlog = createAsyncThunk(
   "UserBlog/MyaccBlog",
   async (_, thunkApi) => {
     try {
-      const response = await axios.get("http://localhost:5000/mdproMyAccKu");
+      const response = await axios.get(
+        "https://blog-app-tan-six.vercel.app/mdproMyAccKu"
+      );
       return response.data;
     } catch (error) {
       if (error.response) {
@@ -45,7 +50,7 @@ export const MyaccBlog = createAsyncThunk(
 export const userBlogLogout = createAsyncThunk(
   "UserBlog/userBlogLogout",
   async () => {
-    await axios.delete("http://localhost:5000/mdproLogoutKu");
+    await axios.delete("https://blog-app-tan-six.vercel.app/mdproLogoutKu");
   }
 );
 
