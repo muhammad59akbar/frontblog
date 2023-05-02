@@ -52,7 +52,7 @@ const ChangePassword = () => {
     e.preventDefault();
     try {
       const response = await axios.patch(
-        `https://blog-app-tan-six.vercel.app/userBlogku/${params.id}`,
+        `https://blog-app-navy-one.vercel.app/userBlogku/${params.id}`,
         {
           firstName: firstName,
           lastName: lastName,

@@ -47,7 +47,7 @@ const AddUser = () => {
     }
     try {
       const response = await axios.post(
-        "https://blog-app-tan-six.vercel.app/userBlogku",
+        "https://blog-app-navy-one.vercel.app/userBlogku",
         {
           firstName: firstName,
           lastName: lastName,

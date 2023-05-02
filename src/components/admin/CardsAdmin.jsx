@@ -12,7 +12,7 @@ const CardsAdmin = () => {
 
   const getAllBlog = async () => {
     axios
-      .get("https://blog-app-tan-six.vercel.app/proBlogAdmin")
+      .get("https://blog-app-navy-one.vercel.app/proBlogAdmin")
       .then(({ data }) => {
         setBlog(data);
       });

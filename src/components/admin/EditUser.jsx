@@ -38,7 +38,7 @@ const EditUser = () => {
 
   useEffect(() => {
     axios
-      .get(`https://blog-app-tan-six.vercel.app/userBlogku/${params.id}`)
+      .get(`https://blog-app-navy-one.vercel.app/userBlogku/${params.id}`)
       .then((response) => {
         setFirstName(response.data.first_name);
         setLastName(response.data.last_name);

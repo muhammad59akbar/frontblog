@@ -57,7 +57,7 @@ const AddBlog = () => {
     formData.append("img", img);
     try {
       const response = await axios.post(
-        "https://blog-app-tan-six.vercel.app/proBlogAdmin",
+        "https://blog-app-navy-one.vercel.app/proBlogAdmin",
         formData,
         {
           headers: {

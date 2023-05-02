@@ -60,7 +60,7 @@ const Users = () => {
     }
 
     await axios
-      .delete(`https://blog-app-tan-six.vercel.app/${userBlogId}`)
+      .delete(`https://blog-app-navy-one.vercel.app/${userBlogId}`)
       .then(({ data }) => {
         Swal.fire({
           icon: "success",

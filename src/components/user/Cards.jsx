@@ -9,7 +9,7 @@ const Cards = () => {
 
   useEffect(() => {
     axios
-      .get("https://blog-app-tan-six.vercel.app/proBlog")
+      .get("https://blog-app-navy-one.vercel.app/proBlog")
       .then((response) => {
         setgetBlogUser(response.data);
       });

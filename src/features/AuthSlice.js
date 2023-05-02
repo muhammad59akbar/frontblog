@@ -14,7 +14,7 @@ export const userBlogLogin = createAsyncThunk(
   async (UserBlog, thunkApi) => {
     try {
       const response = await axios.post(
-        "https://blog-app-tan-six.vercel.app/mdproLoginKu",
+        "https://blog-app-navy-one.vercel.app/mdproLoginKu",
         {
           email: UserBlog.email,
           password: UserBlog.password,
@@ -35,7 +35,7 @@ export const MyaccBlog = createAsyncThunk(
   async (_, thunkApi) => {
     try {
       const response = await axios.get(
-        "https://blog-app-tan-six.vercel.app/mdproMyAccKu"
+        "https://blog-app-navy-one.vercel.app/mdproMyAccKu"
       );
       return response.data;
     } catch (error) {
@@ -50,7 +50,7 @@ export const MyaccBlog = createAsyncThunk(
 export const userBlogLogout = createAsyncThunk(
   "UserBlog/userBlogLogout",
   async () => {
-    await axios.delete("https://blog-app-tan-six.vercel.app/mdproLogoutKu");
+    await axios.delete("https://blog-app-navy-one.vercel.app/mdproLogoutKu");
   }
 );
 

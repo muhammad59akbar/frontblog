@@ -15,7 +15,7 @@ const ViewPost = () => {
 
   useEffect(() => {
     axios
-      .get(`https://blog-app-tan-six.vercel.app/proBlog/${params.id}`)
+      .get(`https://blog-app-navy-one.vercel.app/proBlog/${params.id}`)
       .then((response) => {
         setDetailPost(response.data);
         setUser(response.data.user_blog);

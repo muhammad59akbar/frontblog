@@ -31,7 +31,7 @@ const EditBlog = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/proBlogAdmin/${params.id}`)
+      .get(`https://blog-app-navy-one.vercel.app/proBlogAdmin/${params.id}`)
       .then((response) => {
         setTitle(response.data.title);
         setDesc(response.data.description);
